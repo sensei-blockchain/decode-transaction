@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/sensei-blockchain/decode-transaction.git"
   },
-  "author": "",
+  "author": "sensei-blockchain",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sensei-blockchain/decode-transaction/issues"
