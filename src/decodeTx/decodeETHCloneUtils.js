@@ -2,7 +2,12 @@ const Tx = require('ethereumjs-tx');
 const BigNumber = require('bignumber.js');
 
 const ethCloneTxdecoder = rawTx => {
-  const tx = new Tx(rawTx);
+  let tx
+  try {
+    tx = new Tx(rawTx);
+  } catch (error) {
+    throw new Error('Invalid raw transaction');
+  }
   const decodedTx = {
     nonce: parseInt(tx.nonce.toString('hex'), 16),
     gasPrice: new BigNumber(parseInt(tx.gasPrice.toString('hex'), 16)),

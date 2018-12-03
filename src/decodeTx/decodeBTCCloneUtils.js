@@ -1,8 +1,12 @@
 const { Transaction, crypto, script, address } = require('bitcoinjs-lib');
 
 const btcCloneTxdecoder = (rawTx, bitcoinjsLibNetwork) => {
-  const tx = Transaction.fromHex(rawTx);
-
+  let tx;
+  try {
+    tx = Transaction.fromHex(rawTx);
+  } catch (error) {
+    throw new Error('Invalid raw transaction');
+  }
   const inputs = (tx.ins || []).map((input, n) => {
     const scriptData = script.toASM(input.script);
     const pubKey = scriptData.split(' ')[1];
